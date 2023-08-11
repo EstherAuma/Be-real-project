@@ -1,0 +1,102 @@
+<!-- we are loading all the static files -->
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <!-- You can link more than one css file on your html file -->
+  <!-- we are linking a particular file of css -->
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+
+</head>
+
+
+<body>
+  <div class="esy" style="">
+    <div class="navbar">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid" style="background-color: aliceblue; top: 0; left: 0; position: fixed;">
+          <a class="navbar-brand" href="" style="justify-content: flex-end;">
+            <img src="{% static 'css/image/logo.png' %}" alt="logo" width="50" height="50" style="border-radius: 25px;"
+              class="d-inline-block align-text-top">
+
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
+              <a class="nav-link" href="{% url 'all_sales' %}">All sales</a>
+              <a class="nav-link" href="{% url 'receipt' %}">Receipts</a>
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <h1><em>BeRealMotor Spare Parts company</em></h1>
+    <h2><em>Dealers in selling Engine parts, Used tyres and Batteries</em></h2>
+
+    <div class="container text-center">
+      <div class="row">
+        <div class="col">
+          <div class="card" style="width: 18rem; background-color: rgb(70, 70, 77); color: white;">
+            <img src="{% static 'css/image/engine-parts.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Engine parts</h5>
+              <p class="card-text" style="text-align: justify;">The pictures representing engine parts.
+              
+              </p>
+
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="width: 18rem; background-color:rgb(70, 70, 77);color: white;">
+            <img src="{% static 'css/image/tyres2.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Used tyres</h5>
+              <p class="card-text" style="text-align: justify;">Images of tyres
+                </p>
+
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="width: 18rem; background-color: rgb(70, 70, 77);color: white;">
+            <img src="{% static 'css/image/batteries.jpg' %}" class="card-img-top" alt="batteries.jpg">
+            <div class="card-body">
+              <h5 class="card-title">Batteries</h5>
+              <p class="card-text" style="text-align: justify;">Batteries in stock </p>
+    
+   
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <footer>
+      <a
+        href="https://www.google.com/maps/place/Kiseka+Ln,+Kampala/@-7.8684447,13.1309901,3.14z/data=!4m6!3m5!1s0x177dbb69ac7bd589:0xd7dfa0e2a8c838!8m2!3d0.3254763!4d32.5626212!16s%2Fg%2F11j61d9pm3?entry=ttu">Location
+      </a>
+    </footer>
+  </div>
+</body>
+<!-- how to embade a js file into our html file-->
+<script src="{% static 'Js/script.js'%}"></script>
+
+</html>

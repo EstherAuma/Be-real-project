@@ -1,0 +1,15 @@
+
+
+body {
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 0 20px; 
+    background-color: lightblue;
+   
+}
+.essy{
+    background: beige;
+    border: 2px solid black;
+    padding: 30px;
+    margin: 30px;
+}

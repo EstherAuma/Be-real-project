@@ -1,0 +1,28 @@
+h1,h2{
+    text-align: center;
+}
+#image{
+    text-align: center;
+}
+
+body{
+    
+    background: linear-gradient(to bottom, rgb(129, 129, 199), rgb(205, 125, 125));
+    /* background: linear-gradient(to top, #00ffff, transparent); */
+    color: white;
+}
+.col-md-6{
+    text-align: justify;
+}
+footer{
+    color: black;
+    background-color:white ;
+    text-align: center;
+    padding-top: 2%;
+}
+.map{
+    color: black;
+}
+.navbar bg-body-tertiary fixed-top{
+    background-color: rgb(205, 125, 125);
+}
