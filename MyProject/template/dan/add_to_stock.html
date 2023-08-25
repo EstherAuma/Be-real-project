@@ -1,16 +1,20 @@
-{% extends 'dan/base.html'%} 
-{% load crispy_forms_tags%} 
+{% extends 'dan/base.html'%}
+{% load crispy_forms_tags%}
 {% load static %}
 {% block content%}
-<br/>
+<br />
 
 <div class="container">
-  <form method="POST" action = "">
-    <h1 class = "text-center
+  <form method="POST" action="">
+    <h1 class="text-center
     ">ADD TO STOCK FORM</h1><br>
-    {% csrf_token %} 
-    {{form | crispy}}
-    <input type = "submit" class="btn btn-primary"type="button">
+    <div class="add_form" style="padding: 15px;background-color: gainsboro;border: 2px solid black; max-width: 50%;margin-left: 300px;">
+      {% csrf_token %}
+      {{form | crispy}}
+      
+      <button type="submit" class="btn btn-primary">Add</button>
+      
+    </div>
   </form>
 </div>
 {% endblock %}

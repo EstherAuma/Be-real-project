@@ -1,8 +1,8 @@
 {% extends 'dan/base.html'%} {% block content%}
 <br></br>
 
-<div class = "container">
-<h1 class = "text-center">TOTAL SALES MADE</h1><br>
+<div class="container">
+  <h1 class="text-center">TOTAL SALES MADE</h1><br>
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -10,44 +10,48 @@
         <th scope="col" style="font-weight: bolder; ">Total Change Given</th>
         <th scope="col" style="font-weight: bolder; ">Net Amount</th>
       </tr>
-    </thead>  
+    </thead>
     <tbody>
-      <tr>    
-        <td>UGX{{total}}</td>
-        <td>UGX{{change}}</td>
-        <td>UGX{{net}}</td>
+      <tr>
+        <td style="font-weight: bolder;">UGX{{total}}</td>
+        <td style="font-weight: bolder;">UGX{{change}}</td>
+        <td style="font-weight: bolder;">UGX{{net}}</td>
       </tr>
     </tbody>
   </table>
 </div>
 <br></br>
 
-<div class = "container">
-  <table class="table">
-    <thead class="thead-dark" style="font-weight: bolder;">
-      <tr>
-        <th scope="col">Customer name</th>
-        <th scope="col">Item Bought</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Unit Price(UGX)</th>
-        <th scope="col">Total Cost</th>
-        <th scope="col">Amount Paid</th>
-        <th scope="col">Change Collected</th>
-      </tr>
-    </thead>
-    {% for sale in sales %}
-    <tbody style="font-weight: bolder;">
-      <tr>    
-        <td style="font-weight: bolder;" >{{sale.issued_to | title}}</td>
-        <td style="font-weight: bolder;">{{sale.item | title}}</td>
-        <td style="font-weight: bolder;">{{sale.quantity}}</td>
-        <td style="font-weight: bolder;">UGX{{sale.unit_price}}</td>
-        <td style="font-weight: bolder;">UGX{{sale.get_total}}</td>
-        <td style="font-weight: bolder;">UGX{{sale.amount_recieved}}</td>
-        <td style="font-weight: bolder;">UGX{{sale.get_change}}</td>
-      </tr>
-    </tbody>
-    {% endfor %}
-  </table>
+  <div class="container">
+    <table class="table">
+      <thead class="thead-dark" style="font-weight: bolder;">
+        <tr>
+          <th scope="col">Customer name</th>
+          <th scope="col">Item Bought</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Unit Price(UGX)</th>
+          <th scope="col">Total Cost</th>
+          <th scope="col">Amount Paid</th>
+          <th scope="col">Change Collected</th>
+        </tr>
+      </thead>
+      {% for sale in sales %}
+      <tbody style="font-weight: bolder;">
+        <tr>
+          <td style="font-weight: bolder;">{{sale.issued_to | title}}</td>
+          <td style="font-weight: bolder;">{{sale.item | title}}</td>
+          <td style="font-weight: bolder;">{{sale.quantity}}</td>
+          <td style="font-weight: bolder;">UGX{{sale.unit_price}}</td>
+          <td style="font-weight: bolder;">UGX{{sale.get_total}}</td>
+          <td style="font-weight: bolder;">UGX{{sale.amount_recieved}}</td>
+          <td style="font-weight: bolder;">UGX{{sale.get_change}}</td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+  </div>
 </div>
+<br>
+<br>
+<br>
 {% endblock%}

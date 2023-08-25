@@ -41,16 +41,16 @@ class Category(models.Model):
 class Product(models.Model):
     #referencing the category of the product
     #showing the relationship
-    Category_name = models.ForeignKey(Category, on_delete = models.CASCADE, null = False, blank = False)
+    Category_name = models.ForeignKey(Category, on_delete = models.CASCADE)
     #When we delete any category, it will go with all its products.
 
-    item_name = models.CharField(max_length = 50,null = False,blank = False)
-    #reserved for date of arrival field
-    country_of_origin =models.CharField(max_length = 50,null = False,blank = False) 
-    total_quantity= models.IntegerField(default = 0, null=False, blank = False, validators=[MinValueValidator(1)])
-    issued_quantity = models.IntegerField(default = 0, null=False, blank = False)
-    recieved_quantity = models.IntegerField(default = 0, null = False, blank = False)
-    unit_price = models.IntegerField(default = 0, null = False, blank = False)
+    item_name = models.CharField(max_length = 50)
+    received_date =models.DateTimeField(auto_now=True)
+    country_of_origin =models.CharField(max_length = 50) 
+    total_quantity= models.IntegerField(default=0, null=True,blank=True)
+    issued_quantity = models.IntegerField(default=0, null=True,blank=True)
+    recieved_quantity = models.IntegerField(default=0,null=False,blank=False)
+    unit_price = models.IntegerField(default=0, null=True,blank=True)
 
 
     def __str__(self):
@@ -59,12 +59,13 @@ class Product(models.Model):
 
 class Sale(models.Model):
     #on_delete should only be used on a foreign key.
-    item = models.ForeignKey(Product, on_delete =models.CASCADE, null=False,blank=False)
-    quantity = models.IntegerField(default =0, null=False,blank=False)
-    amount_recieved = models.IntegerField(default =0, null=False, blank=False)
+    item = models.ForeignKey(Product,on_delete=models.CASCADE, null=False,blank=False)
+    quantity = models.IntegerField(null=False,blank=False)
+    amount_recieved = models.IntegerField(null=False, blank=False)
     issued_to = models.CharField(max_length=50, null=False, blank=False)
     unit_price = models.IntegerField(default =0, null=False, blank=False)
     branch_name = models.CharField(max_length=50, null=False, blank=False)
+    sale_date = models.DateField(default=timezone.now)
     phone_number = models.CharField(max_length=50, null=False, blank=False)
 
     def get_total(self):

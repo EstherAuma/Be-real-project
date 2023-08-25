@@ -34,7 +34,7 @@ def home(request):
     
 #we  are querrying our database
 #asking the db to get all the products in models and order them by id.
-    products = Product.objects.all().order_by('-id')
+    products = Product.objects.all().order_by('id')
 
 #filter what you have already fetched/got
     product_filters = ProductFilter(request.GET,queryset = products)
@@ -54,35 +54,10 @@ def all_sales(request):
     net = total - change
     return render(request,'dan/all_sales.html',{'sales':sales,'change':change,'total':total,'net':net,})
 
-#this function requires any user to first login inorder to acquire issue items
-@login_required
-def issue_item(request,pk):
-    issued_item = Product.objects.get(id = pk)
-    sales_form = SaleForm(request.POST)
-
-    if request.method == 'POST':
-        if sales_form.is_valid():
-            new_sale = sales_form.save(commit = False)
-            new_sale.item = issued_item
-            new_sale.unit_price = issued_item.unit_price
-            new_sale.save()
-            #keep track of items remaining  after sale
-            issued_quantity = int(request.POST['quantity'])
-            issued_item.total_quantity -=  issued_quantity
-            issued_item.save()
-
-            print(issued_item.item_name)
-
-            print(request.POST['quantity'])
-            print(issued_item.total_quantity)
-            return redirect('receipt')
-    return render(request,'dan/issue_item.html',{'sales_form':sales_form})
-
-
 
 @login_required
-def product_details(request,product_id):
-    product = Product.objects.get(id = product_id)
+def product_detail(request,product_id):
+    product = Product.objects.get(id=product_id)
     return render(request,'dan/product_detail.html',{'product': product})
     
 
@@ -100,23 +75,6 @@ def receipt_detail(request,receipt_id):
     return render(request,'dan/receipt_detail.html',{'receipt':receipt}) 
   
 
-@login_required
-def add_to_stock(request,pk):
-    issued_item = Product.objects.get(id=pk)
-    form = AddForm(request.POST)
-
-    if request.method == 'POST':
-
-        if form.is_valid():
-            added_quantity = int(request.POST['recieved_quantity'])
-            issued_item.total_quantity += added_quantity
-            issued_item.save()
-            #to add to the remaining stock, quantity is reduced.
-            print(added_quantity)
-            print(issued_item.total_quantity)
-            #you are redirected to the home page after when you are done with the form
-            return redirect('home')
-    return render(request,'dan/add_to_stock.html',{'form':form})
 
 
 @login_required
@@ -139,6 +97,49 @@ def register(request):
         else:
             return render(request,'dan/register.html',{'form':form})
 
+
+
+@login_required
+def add_to_stock(request,pk):
+    issued_item = Product.objects.get(id=pk)
+    form = AddForm(request.POST)
+
+    if request.method == 'POST':
+
+        if form.is_valid():
+            added_quantity=int(request.POST['recieved_quantity'])
+            issued_item.total_quantity += added_quantity
+            issued_item.save()
+            #to add to the remaining stock, quantity is reduced.
+            print(added_quantity)
+            print(issued_item.total_quantity)
+            #you are redirected to the home page after when you are done with the form
+            return redirect('home')
+    return render(request,'dan/add_to_stock.html',{'form':form})
+
+
+@login_required
+def issue_item(request,pk):
+    issued_item = Product.objects.get(id = pk)
+    sales_form = SaleForm(request.POST)
+
+    if request.method == 'POST':
+        if sales_form.is_valid():
+            new_sale = sales_form.save(commit = False)
+            new_sale.item = issued_item
+            new_sale.unit_price = issued_item.unit_price
+            new_sale.save()
+            #keep track of items remaining  after sale
+            issued_quantity = int(request.POST['quantity'])
+            issued_item.total_quantity -=  issued_quantity
+            issued_item.save()
+
+            print(issued_item.item_name)
+
+            print(request.POST['quantity'])
+            print(issued_item.total_quantity)
+            return redirect('receipt')
+    return render(request,'dan/issue_item.html',{'sales_form':sales_form})
 
 
 

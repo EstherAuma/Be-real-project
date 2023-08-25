@@ -6,13 +6,13 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h1 class="text-center">ORDER SUMMARY</h1><br>
-          <h2 class="lead">Customer Name: {{receipt.issued_to | title}}</h2>
+          <h3 class="text-center">ORDER SUMMARY</h3><br>
+          <h2 class="lead" style="font-weight: bolder;">Customer Name: {{receipt.issued_to | title}}</h2>
         </div>
         <div class="card-block">
           <div class="table-responsive">
             <table class="table table-sm">
-              <thead>
+              <thead style="background-color: black; color: white;">
                 <tr>
                   <td><strong>Item Name</strong></td>
                   <td class="text-xs-center"><strong>Item Quantity</strong></td>
@@ -25,11 +25,11 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>{{receipt.item| title}}</td>
-                  <td class="text-xs-center">{{receipt.quantity }}</td>
-                  <td class="text-xs-center">Ug{{receipt.get_total | title}}</td>
-                  <td class="text-xs-right">Ugx{{ receipt.amount_recieved }}</td>
-                  <td class="text-xs-right">Ugx{{ receipt.get_change }}</td>
+                  <td style="font-weight: bolder;">{{receipt.item| title}}</td>
+                  <td class="text-xs-center" style="font-weight: bolder;">{{receipt.quantity }}</td>
+                  <td class="text-xs-center" style="font-weight: bolder;">Ugx{{receipt.get_total | title}}</td>
+                  <td class="text-xs-right" style="font-weight: bolder;">Ugx{{ receipt.amount_recieved }}</td>
+                  <td class="text-xs-right" style="font-weight: bolder;">Ugx{{ receipt.get_change }}</td>
                 </tr>
               </tbody>
             </table>
@@ -39,5 +39,7 @@
     </div>
   </div>
 </div>
-
+<br>
+<br>
+<br>
 {% endblock %}

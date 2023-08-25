@@ -1,42 +1,34 @@
-html,body {
-    position: relative;
+body {
+   
+    background-color: #cae9ff;
     overflow-x: hidden;
-    background:  url('/static/images/img6.jpg');
-    width: 100% !important;
-    height: 100vh;
-    display: table;
-    position: relative;
-    background-position: center;
-    background-attachment: scroll;
-    -o-background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-body{
-     background-color: rgb(176, 176, 211);
-      
- }
+};
+    
 
 
-form {
+
+
+.form {
     width: 40%;
-    margin: 0 auto;
+    margin-left: 50px;
 }
 
 .navbar {
-    background-color:white;
-    height: 50px;
+    background-color:#27187e;
+    height: 60px;
+    color: white;
+    
 }
 
 .navbar li a {
     font-size: 20px;
+    
+    
 }
 
 .navbar-brand {
     font-size: 25px !important;
+    
 }
 
 @media(max-width: 767px){
@@ -48,13 +40,85 @@ form {
 .text-center{
     color:black;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    text-decoration-line: underline;
+    font-size: 30px;
+
 }
 
 .container{
-    margin-left: 100px;
+    margin-left: 55px;
 }
 
 .filter{
     margin-right: 450px;
 }
+
+.table{
+    background-color:#e1e5f2;
+    margin-right: 450px;
+}
+
+
+
+.receipt-title{
+    text-align: center;
+    background-color:#e1e5f2 ;
+}
+.card-block{
+    background-color: #e1e5f2;
+}
+
+
+/* Base styles for container and card */
+.container {
+    padding: 10px;
+  }
+  
+  .card {
+    max-width: 60%;
+    
+    border-style: dotted;
+    background-color:#e1e5f2 ;
+  }
+  
+  /* Media query for screens up to 768px width */
+  @media (max-width: 768px) {
+    .container {
+      padding: 5px;
+    }
+}
+
+    .card {
+      max-width: 80%;
+      margin-left: 0;
+      margin-right: 0;
+      margin-left: 150px;
+    }
+  
+    /* Adjust other styles for smaller screens */
+  
+
+
+
+  footer{
+    position: fixed;
+    background-color:#0a2463;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    height: 67px;
+    width: 100%;
+    padding-top: 10px;
+    color:white;
+  }
+
+  .table-data{
+    border: 2px solid black;
+  }
+
+  
+
+  
+
+  
+
+  

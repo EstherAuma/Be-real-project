@@ -11,17 +11,19 @@ urlpatterns = [
 
    path('login/',auth_views.LoginView.as_view(template_name ='dan/login.html'), name = 'login'),
    
-   path('home/<int:product_id>',views.product_details,name='product_detail'),
+   path('home/<int:product_id>',views.product_detail,name='product_detail'),
    
    path('receipt/',views.receipt, name = 'receipt'),
 
    path('receipt_detail/<int:receipt_id>',views.receipt_detail, name = 'receipt_detail'),
 
+   
    path('issue_item/<str:pk>',views.issue_item, name = 'issue_item'),
 
    path('all_sales/',views.all_sales, name = 'all_sales'),
 
-   path('add_to_stock/<str:pk>',views.add_to_stock, name ='add_to_stock'),
+
+   path('add_to_stock/<int:pk>',views.add_to_stock, name ='add_to_stock'),
 
    path('login/',auth_views.LogoutView.as_view(template_name ='dan/logout.html'), name = 'logout'),
    
@@ -30,4 +32,6 @@ urlpatterns = [
    path('register/', views.register, name='register'),
    
 ]
+
+
 
