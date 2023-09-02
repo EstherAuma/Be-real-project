@@ -1,9 +1,9 @@
 {% extends 'dan/base.html'%} {% block content%}
 <br></br>
 
-<div class = "container">
-    <a href="{% url 'issue_item' product.id %}" ><input type="submit" value="Open Sales Form" class="btn btn-primary" btn type="button"/></a>
-    <a href="{% url 'add_to_stock' product.id %}" ><input type= "submit" value="Add Stock" class="btn btn-primary" type="button"/></a>
+<div class = "container" style="margin-top: 40px;">
+    <a href="{% url 'issue_item' product.id %}" ><input type="submit" value="Open Sales Form" class="btn btn-primary" style="font-weight: bold;" type="button"/></a>
+    <a href="{% url 'add_to_stock' product.id %}" ><input type= "submit" value="Add Stock" class="btn btn-primary" style="font-weight: bold;" type="button"/></a>
 </div>
 
 <br></br>

@@ -13,7 +13,7 @@
 }
 
 body {
-    background-color: #8d99ae;
+    background-color: #cae9ff;
 }
 
 
@@ -28,8 +28,8 @@ body {
 }
 
 .form-container {
-    background-color: #e1e5f2;
-    border: 2px solid black;
+    background-color:azure;
+    border: 2px solid #0a2463;
     border-radius: 25px;
     margin: 0 auto;
     margin-left: 32%;
@@ -39,9 +39,13 @@ body {
 
 footer {
     text-align: center;
-    background-color: #e1e5f2;
+    background-color: #0a2463;
     left: 0;
     height: 75px;
     margin-top: 100px;
     padding-top: 10px;
+}
+#form{
+    width: 80%;
+    
 }

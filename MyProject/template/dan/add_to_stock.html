@@ -4,11 +4,11 @@
 {% block content%}
 <br />
 
-<div class="container">
+
   <form method="POST" action="">
-    <h1 class="text-center
-    ">ADD TO STOCK FORM</h1><br>
-    <div class="add_form" style="padding: 15px;background-color: gainsboro;border: 2px solid black; max-width: 50%;margin-left: 300px;">
+    <h1
+    >ADD TO STOCK FORM</h1><br>
+    <div class="add_form">
       {% csrf_token %}
       {{form | crispy}}
       
@@ -16,5 +16,5 @@
       
     </div>
   </form>
-</div>
+
 {% endblock %}

@@ -17,19 +17,6 @@ from django.core.validators import MinValueValidator
 
 # Create your models here.
 
-
-# class UserProfile(AbstractUser):
-#     username = models.CharField(max_length=50, unique=True)
-#     email = models.EmailField(unique=True)
-#     phone = models.CharField(blank=True)
-
-#     def __str__(self): 
-#         return self.username
-#         db_table = 'spare_users'
-#         verbose_name = 'User'
-#         verbose_name_plural = 'Users'
-    
-
 #Here the table is called Category.
 class Category(models.Model):
     #accepts both
@@ -47,10 +34,10 @@ class Product(models.Model):
     item_name = models.CharField(max_length = 50)
     received_date =models.DateTimeField(auto_now=True)
     country_of_origin =models.CharField(max_length = 50) 
-    total_quantity= models.IntegerField(default=0, null=True,blank=True)
+    total_quantity= models.IntegerField(default=0, null=False,blank=False)
     issued_quantity = models.IntegerField(default=0, null=True,blank=True)
     recieved_quantity = models.IntegerField(default=0,null=False,blank=False)
-    unit_price = models.IntegerField(default=0, null=True,blank=True)
+    unit_price = models.IntegerField(default=0, null=False,blank=False)
 
 
     def __str__(self):
@@ -59,7 +46,7 @@ class Product(models.Model):
 
 class Sale(models.Model):
     #on_delete should only be used on a foreign key.
-    item = models.ForeignKey(Product,on_delete=models.CASCADE, null=False,blank=False)
+    item = models.ForeignKey(Product,on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False,blank=False)
     amount_recieved = models.IntegerField(null=False, blank=False)
     issued_to = models.CharField(max_length=50, null=False, blank=False)

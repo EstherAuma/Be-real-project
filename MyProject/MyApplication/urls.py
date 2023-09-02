@@ -3,6 +3,7 @@ from MyApplication import views
 #let's reuse the django login view
 from django.contrib.auth import views as auth_views
 #auth_views can be any name and will be the name of views
+
 urlpatterns = [
    
    path('',views.index,name='index'),
@@ -10,7 +11,7 @@ urlpatterns = [
    path('home',views.home,name='home'),
 
    path('login/',auth_views.LoginView.as_view(template_name ='dan/login.html'), name = 'login'),
-   
+
    path('home/<int:product_id>',views.product_detail,name='product_detail'),
    
    path('receipt/',views.receipt, name = 'receipt'),

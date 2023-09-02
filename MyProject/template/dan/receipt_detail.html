@@ -1,45 +1,42 @@
-{% extends 'dan/base.html'%} {% block content%}
+{% extends 'dan/base.html'%}
+{% load static %}
+{% block content%}
 <br />
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header">
-          <h3 class="text-center">ORDER SUMMARY</h3><br>
-          <h2 class="lead" style="font-weight: bolder;">Customer Name: {{receipt.issued_to | title}}</h2>
-        </div>
-        <div class="card-block">
-          <div class="table-responsive">
-            <table class="table table-sm">
-              <thead style="background-color: black; color: white;">
-                <tr>
-                  <td><strong>Item Name</strong></td>
-                  <td class="text-xs-center"><strong>Item Quantity</strong></td>
-                  <td class="text-xs-right"><strong>Total Bill(Ugx)</strong></td>
-                  <td class="text-xs-right"><strong>Amount Paid(Ugx)</strong></td>
-                  <td class="text-xs-right">
-                    <strong>Total change(UgX)</strong>
-                  </td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="font-weight: bolder;">{{receipt.item| title}}</td>
-                  <td class="text-xs-center" style="font-weight: bolder;">{{receipt.quantity }}</td>
-                  <td class="text-xs-center" style="font-weight: bolder;">Ugx{{receipt.get_total | title}}</td>
-                  <td class="text-xs-right" style="font-weight: bolder;">Ugx{{ receipt.amount_recieved }}</td>
-                  <td class="text-xs-right" style="font-weight: bolder;">Ugx{{ receipt.get_change }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+
+<div class="final-receipt">
+  <h3 class="final">FINAL RECEIPT</h3><br>
+<div class="card">
+  <div class="card-body">
+    <h3 class="title">BeRealMotors Spare Parts Company</h3>
+    <div class="contentent">
+      <img src="{% static 'css/image/2.png' %}" alt="logo" width="80" height="80"
+        style="border-radius: 30px; margin-left: 40px;" class="d-inline-block align-text-top">
+
+      <h6 style="margin-left: 600px;"><em>Receipt No: BRM-{{receipt.id}}</em></h6>
+
+      <br>
+
+      <h6 style="margin-left: 600px;"><em>Date: {{receipt.sale_date}}</em></h6>
+      <h6 class="card-title">Cash Received from : {{receipt.issued_to | title}}</h6>
+      <h6 class="card-text">Item name : {{receipt.item}}</h6>
+      <h6 class="card-text">Amount Paid: UGX{{ receipt.amount_recieved }}</h6>
+      <h6 class="card-text">Quantity bought: {{receipt.quantity }}</h6>
+      <h6>Total Price: UGX{{ receipt.get_total }}</h6>
+      <div style="flex: 1">
+        <h6 class="card-text">Change Collected: UGX{{ receipt.get_change }}</h6>
+        <br>
+        <h6>
+          ****************************************************************************************************************
+        </h6>
+        <h6><em>Received with great thanks!!</em></h6>
+        <h6 style="margin-left: 600px;"><em>Sales staff</em></h6>
+        <h6 style="margin-left: 600px;"><em>Sign:...............</em></h6>
     </div>
   </div>
 </div>
-<br>
-<br>
-<br>
-{% endblock %}
+</div>
+ 
+<br><br> <br> <br> <br>  
+
+    {% endblock %}

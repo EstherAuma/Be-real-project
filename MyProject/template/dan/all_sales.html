@@ -1,8 +1,9 @@
 {% extends 'dan/base.html'%} {% block content%}
 <br></br>
 
-<div class="container">
-  <h1 class="text-center">TOTAL SALES MADE</h1><br>
+<h1 class="text-center">TOTAL SALES MADE</h1><br>
+<div class="container" style="margin-top: 20px;">
+  
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -28,6 +29,7 @@
         <tr>
           <th scope="col">Customer name</th>
           <th scope="col">Item Bought</th>
+          <th scope="col">Part Number</th>
           <th scope="col">Quantity</th>
           <th scope="col">Unit Price(UGX)</th>
           <th scope="col">Total Cost</th>
@@ -40,6 +42,7 @@
         <tr>
           <td style="font-weight: bolder;">{{sale.issued_to | title}}</td>
           <td style="font-weight: bolder;">{{sale.item | title}}</td>
+          <td style="font-weight: bolder;">BRM-{{sale.id}}</td>
           <td style="font-weight: bolder;">{{sale.quantity}}</td>
           <td style="font-weight: bolder;">UGX{{sale.unit_price}}</td>
           <td style="font-weight: bolder;">UGX{{sale.get_total}}</td>

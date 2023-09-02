@@ -5,19 +5,19 @@
 
 {% block content %}
 <br />
-<div class="container">
-<form method="POST" action="" enctype="multipart/form-data" style="padding-left: 400pz;">
-    <h1 class="text-center" style="font-size: 30px;">SALES FORM</h1>
-    <div class="form" style=" padding: 15px;background-color: gainsboro;max-width: 50%;margin-left: 300px;">
+<h1>SALES FORM</h1>
+<form method="POST" action="" enctype="multipart/form-data">
+    
+    <div class="form">
         <br />
         {% csrf_token %}
         {{sales_form | crispy}}
         
-        <button class="btn btn-primary btn" type="submit" style="margin-left: 170px;width: 200px;">Buy Now</button>
+        <button class="btn btn-primary btn" type="submit" style="margin-left: 155px;width: 200px;font-weight: bold;">Issue Now</button>
 
     </div>
 </form>
-</div>
+
 <br>
 <br>
 <br>
