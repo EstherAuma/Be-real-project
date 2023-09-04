@@ -1,6 +1,6 @@
 body {
    
-    background-color: #cae9ff;
+    background-color: #EEEDED;
     overflow-x: hidden;
     z-index: 500;
 };
@@ -77,12 +77,7 @@ body {
     background-color: azure;width: 80%;margin-left: 110px;
   }
   
-  /* .card {
-    width: 50%;
-    
-    border-style: dotted;
-    background-color:azure ;
-  } */
+  
   
   /* Media query for screens up to 768px width */
   @media (max-width: 768px) {
@@ -117,12 +112,9 @@ body {
     color:white;
   }
 
-  .table-data{
-    border: 2px solid black;
-  }
-
+  
   .title{
-    margin-left: 200px;
+    margin-left: 150px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     
   }
@@ -183,4 +175,11 @@ h1{
     margin-top: 60px;
     font-size: 30px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.card-title{
+    margin-left: 20px;
+}
+
+.card-text{
+    margin-left: 20px;
 }

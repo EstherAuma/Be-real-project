@@ -1,9 +1,10 @@
-{% extends 'dan/base.html'%} {% block content%}
+{% extends 'dan/base.html'%}
+{% block content%}
 {% load static %}
 <br /><br>
 <div class="first-receipt">
   
-  <h3 class="text-center">PAYMENT CONFIRMATION RECEIPTS</h3><br>
+  <h3 class="text-center" style="margin-left: 20px;">PAYMENT CONFIRMATION RECEIPTS</h3><br>
   
   {% for sale in sales %}
   <div class="card" style="z-index: 0;">
@@ -12,26 +13,26 @@
       
       <img src="{% static 'css/image/2.png' %}" alt="logo" width="80" height="80" style="border-radius: 30px; margin-left: 40px;"
         class="d-inline-block align-text-top">
-        <h6 style="margin-left: 600px;"><em>Receipt No: BRM-{{sale.id}}</em></h6>
+        <h6 style="margin-left: 500px;"><em>Receipt No: BRM-{{sale.id}}</em></h6>
         <br>
-        <h6 style="margin-left: 600px;"><em>Date: {{sale.sale_date}}</em></h6>
-      <h6 class="card-title">Cash Received from : {{sale.issued_to | title}}</h6>
+        <h6 style="margin-left: 500px;"><em>Date: {{sale.sale_date}}</em></h6>
+      <h6 class="card-title">Customer's name : {{sale.issued_to | title}}</h6>
       <h6 class="card-text">Item name : {{sale.item}}</h6>
       <h6 class="card-text">Amount Paid: UGX{{ sale.amount_recieved }}</h6>
       <h6 class="card-text">Quantity bought : {{sale.quantity }}</h6>
-      <h6>Total Price : UGX{{ sale.get_total }}</h6>
+      <h6 class="card-text">Total Price : UGX{{ sale.get_total }}</h6>
       <div style="flex: 1">
         <h6 class="card-text">Change Collected: UGX{{ sale.get_change }}</h6>
 
         <a href="{% url 'receipt_detail' sale.id %}">
-          <input type="submit" value="Final Receipt" class="btn btn-primary" type="button" />
+          <input type="submit" value="Final Receipt" class="btn btn-primary" style="margin-left: 20px;" type="button" />
         </a><br><br>
 
-        <h6>*******************************************************************************************************************</h6>
+        <h6 class="card-text">******************************************************************************************</h6>
         <br>
-                <h6><em>Received with great thanks!!</em></h6>
-                <h6 style="margin-left: 600px;"><em>Sales staff</em></h6>
-                <h6 style="margin-left: 600px;"><em>Sign:..........</em></h6>
+                <h6 class="card-text"><em>Received with great thanks!!</em></h6>
+                <h6 style="margin-left: 500px;"><em>Sales staff</em></h6>
+                <h6 style="margin-left: 500px;"><em>Sign:..........</em></h6>
       </div>
     </div>
   </div>

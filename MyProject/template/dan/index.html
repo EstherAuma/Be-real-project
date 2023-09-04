@@ -1,5 +1,8 @@
 <!-- we are loading all the static files -->
 {% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 <!DOCTYPE html>
 
 <html lang="en">
@@ -11,14 +14,12 @@
   <!-- You can link more than one css file on your html file -->
   <!-- we are linking a particular file of css -->
   <link rel="stylesheet" href="{% static 'css/index.css' %}">
-  {% load bootstrap5 %}
-  {% bootstrap_css %}
-  {% bootstrap_javascript %}
+  
 
 </head>
 
 
-<body style="background-color:#cae9ff;">
+<body>
 
   <ul class="nav justify-content-end" style="background-color:#0a2463">
     <li class="nav-item">
@@ -35,20 +36,16 @@
   <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner" style="margin: 0% 25%;">
       <div class="carousel-item active">
-        <img src="{% static 'css/image/tires.jpg' %}" class="d-block w-50" alt="">
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'css/image/batteries.jpg' %}" class="d-block w-50" alt="">
-      </div>
-      <!-- <div class="carousel-item">
-        <img src="{% static 'css/image/engines3.jpg' %}" class="d-block w-50" alt="">
-      </div> -->
-      <div class="carousel-item">
-        <img src="{% static 'css/image/iStock.jpg' %}" class="d-block w-50" alt="">
-      </div>
-      <div class="carousel-item">
         <img src="{% static 'css/image/maxxis.jpg' %}" class="d-block w-50" alt="">
       </div>
+      <div class="carousel-item">
+        <img src="{% static 'css/image/batteries.jpg' %}" class="d-block w-50" height="300" alt="">
+      </div>
+      
+      <div class="carousel-item">
+        <img src="{% static 'css/image/images.jpg' %}" class="d-block w-50" alt="">
+      </div>
+      
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
       data-bs-slide="prev">

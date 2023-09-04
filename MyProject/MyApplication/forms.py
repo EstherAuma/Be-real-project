@@ -27,8 +27,5 @@ class SaleForm(forms.ModelForm):
         fields = ['quantity','amount_recieved','issued_to','phone_number','branch_name','sale_date']
 
 
-class RegisterForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields = ['username','email','password1','password2']
+
     

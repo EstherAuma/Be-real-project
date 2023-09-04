@@ -8,10 +8,11 @@ urlpatterns = [
    
    path('',views.index,name='index'),
    
-   path('home',views.home,name='home'),
-
+   path('home/',views.home,name='home'),
+   
    path('login/',auth_views.LoginView.as_view(template_name ='dan/login.html'), name = 'login'),
-
+   
+   
    path('home/<int:product_id>',views.product_detail,name='product_detail'),
    
    path('receipt/',views.receipt, name = 'receipt'),
@@ -28,10 +29,7 @@ urlpatterns = [
 
    path('login/',auth_views.LogoutView.as_view(template_name ='dan/logout.html'), name = 'logout'),
    
-   path('delete/<int:product_id>',views.delete_detail, name= 'delete_detail'),
-
-   path('register/', views.register, name='register'),
-   
+     
 ]
 
 

@@ -21,7 +21,8 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#0a2463;position: fixed;width: 100%;z-index: 1;height: 70px;">
+  <nav class="navbar navbar-expand-lg navbar-dark"
+    style="background-color:#0a2463;position: fixed;width: 100%;z-index: 1;height: 70px;">
 
     <div class="container-fluid">
 
@@ -29,38 +30,56 @@
         <img src="{% static 'css/image/2.png' %}" alt="logo" width="75" height="65" style="border-radius: 30px;"
           class="d-inline-block align-text-top">
       </a>
-        
-
-        <a href="#" class="navbar-brand" style="margin-left: 10px;color: white;font-weight: bolder;">BeRealMotors</a>
-
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-
-            <span class="navbar-toggler-icon"></span>
-
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarCollapse">
 
 
-            <div class="navbar-nav ms-auto">    
-              {% if user.is_authenticated %}         
-              
-                <a href="{% url 'home' %}" class="nav-item nav-link active" style="color: white;font-weight: bolder;">Home</a>
+      <a href="#" class="navbar-brand" style="margin-left: 10px;color: white;font-weight: bolder;">BeRealMotors</a>
 
-                <a href="{% url 'receipt' %}" class="nav-item nav-link" style="color: white;font-weight: bolder;">Receipts</a>
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 
-                <a href="{% url 'all_sales' %}" class="nav-item nav-link" style="color: white;font-weight: bolder;">All sales</a>
+        <span class="navbar-toggler-icon"></span>
 
-               <a href="{% url 'index' %}" class="nav-item nav-link" style="color: white;font-weight: bolder;" >Logout</a>
-              
-               {% endif %}
-            
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+
+
+        <div class="navbar-nav ms-auto">
+          {% if user.is_authenticated %}
+
+          <a href="{% url 'home' %}" class="nav-item nav-link active" style="color: white;font-weight: bolder;">Home</a>
+
+          <a href="{% url 'receipt' %}" class="nav-item nav-link" style="color: white;font-weight: bolder;">Receipts</a>
+
+          <a href="{% url 'all_sales' %}" class="nav-item nav-link" style="color: white;font-weight: bolder;">All
+            sales</a>
+
+          <a href="{% url 'index' %}" class="nav-item nav-link" style="color: white;font-weight: bolder;">Logout</a>
+
+          {% endif %}
+
 
         </div>
 
-    </div>
+      </div>
 
   </nav>
+  {% if messages %}
+  <div class="toast  show" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 100; position: absolute;" data-bs-delay="100" data-bs-autohide="true">
+    <div class="toast-header">
+      <!-- <img src="" class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small> -->
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" style="margin-left: 300px;"></button>
+    </div>
+    {% for message in messages %}
+    <div class="toast-body {% if message.tags %} {{ message.tags }} {% endif %}">
+      
+      {{ message }}
+     
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
 
   {% block content %}
 
@@ -74,14 +93,16 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
+  <script>const toastElList = document.querySelectorAll('.toast')
+    const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, option))</script>
+</body>
+</div>
 
-  </div>
+<footer>
+  &copy; BeRealMotor Spare Parts Company <br>
+  Genuine solutions to your machinery<br>
 
-  <footer>
-    &copy; BeRealMotor Spare Parts Company <br>
-    Genuine solutions to your machinery<br>
-  
-  </footer>
+</footer>
 </body>
 
 </html>

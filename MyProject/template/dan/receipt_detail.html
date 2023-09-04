@@ -13,25 +13,25 @@
       <img src="{% static 'css/image/2.png' %}" alt="logo" width="80" height="80"
         style="border-radius: 30px; margin-left: 40px;" class="d-inline-block align-text-top">
 
-      <h6 style="margin-left: 600px;"><em>Receipt No: BRM-{{receipt.id}}</em></h6>
+      <h6 style="margin-left: 500px;"><em>Receipt No: BRM-{{receipt.id}}</em></h6>
 
       <br>
 
-      <h6 style="margin-left: 600px;"><em>Date: {{receipt.sale_date}}</em></h6>
-      <h6 class="card-title">Cash Received from : {{receipt.issued_to | title}}</h6>
+      <h6 style="margin-left: 500px;"><em>Date: {{receipt.sale_date}}</em></h6>
+      <h6 class="card-title">Customer's name : {{receipt.issued_to | title}}</h6>
       <h6 class="card-text">Item name : {{receipt.item}}</h6>
       <h6 class="card-text">Amount Paid: UGX{{ receipt.amount_recieved }}</h6>
       <h6 class="card-text">Quantity bought: {{receipt.quantity }}</h6>
-      <h6>Total Price: UGX{{ receipt.get_total }}</h6>
+      <h6 class="card-text">Total Price: UGX{{ receipt.get_total }}</h6>
       <div style="flex: 1">
         <h6 class="card-text">Change Collected: UGX{{ receipt.get_change }}</h6>
         <br>
-        <h6>
-          ****************************************************************************************************************
+        <h6 class="card-text">
+          ******************************************************************************************
         </h6>
-        <h6><em>Received with great thanks!!</em></h6>
-        <h6 style="margin-left: 600px;"><em>Sales staff</em></h6>
-        <h6 style="margin-left: 600px;"><em>Sign:...............</em></h6>
+        <h6 class="card-text"><em>Received with great thanks!!</em></h6>
+        <h6 style="margin-left: 500px;"><em>Sales staff</em></h6>
+        <h6 style="margin-left: 500px;"><em>Sign:...............</em></h6>
     </div>
   </div>
 </div>

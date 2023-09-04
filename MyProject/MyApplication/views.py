@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.contrib import messages
 
-# Create your views here.
-
+from django.contrib.auth import authenticate, login
 
 from django.shortcuts import render,redirect
+
 from django.http import HttpResponse,HttpResponseRedirect
 
 #here we are importing our models
@@ -15,7 +15,6 @@ from .forms import *
 #importing filters
 from .filters import *
 
-
 #importing decorators
 #login_required is to protect a view,can only be accessed after loging in.
 from django.contrib.auth.decorators import login_required
@@ -26,13 +25,10 @@ from django.urls import reverse
 def index(request):
     return render(request,'dan/index.html')
 
-def login(request):
-    return render(request,'dan/login.html')
 
-
+@login_required
 def home(request):
     
-#we  are querrying our database
 #asking the db to get all the products in models and order them by id.
     products = Product.objects.all().order_by('id')
 
@@ -40,7 +36,6 @@ def home(request):
     product_filters = ProductFilter(request.GET,queryset = products)
     product = product_filters.qs
     
-
     #telling django to consider home.html
     #the home page will be displayed and where you are able to query the db/search
     return render(request,'dan/home.html',{'products':product,'product_filters':product_filters})
@@ -61,43 +56,16 @@ def product_detail(request,product_id):
     return render(request,'dan/product_detail.html',{'product': product})
     
 
-
-
 @login_required
 def receipt(request):
     sales = Sale.objects.all().order_by('-id')
     return render(request,'dan/receipt.html',{'sales':sales})
     
 
-
 def receipt_detail(request,receipt_id):
     receipt = Sale.objects.get(id = receipt_id)
     return render(request,'dan/receipt_detail.html',{'receipt':receipt}) 
   
-
-
-
-@login_required
-def delete_detail(request, product_id):
-    delete_product =Product.objects.get(id=product_id)
-    delete_product.delete()
-    return HttpResponseRedirect(reverse('home')) 
-
-def register(request):
-    if request.method == 'GET':
-        form = RegisterForm()
-        return render(request,'dan/register.html',{'form':form})
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.username = user.username.lower()
-            user.save()
-            return redirect('login')
-        else:
-            return render(request,'dan/register.html',{'form':form})
-
-
 
 @login_required
 def add_to_stock(request,pk):
@@ -110,6 +78,7 @@ def add_to_stock(request,pk):
             added_quantity=int(request.POST['recieved_quantity'])
             issued_item.total_quantity += added_quantity
             issued_item.save()
+            messages.success(request,'Congratulations, you have successfully added an item' ,extra_tags='bg-success')
             #to add to the remaining stock, quantity is reduced.
             print(added_quantity)
             print(issued_item.total_quantity)
@@ -133,13 +102,17 @@ def issue_item(request,pk):
             issued_quantity = int(request.POST['quantity'])
             issued_item.total_quantity -=  issued_quantity
             issued_item.save()
-
+            messages.success(request,'Congratulations, you have successfully issued an item' ,extra_tags='bg-success')
+            
             print(issued_item.item_name)
 
             print(request.POST['quantity'])
             print(issued_item.total_quantity)
             return redirect('receipt')
     return render(request,'dan/issue_item.html',{'sales_form':sales_form})
+
+
+
 
 
 
